@@ -1,0 +1,35 @@
+.Compass
+  
+  height: 59px
+  position: absolute
+  z-index: 1001
+  left: 0
+  right: 0
+  top: 0
+  backdrop-filter: blur(8px)
+  background-color: #ffffff2e
+  display: flex
+  flex-direction: column
+  .coords 
+    position: absolute
+    bottom: 0
+    left: 10px
+
+  .angles
+    height: 39px
+    width: 100%
+    background: url(../../../assets/logo.svg)
+    transition: 0
+    background-repeat: repeat
+    background-size: 2428px 85px
+  .middle
+    display: flex
+    justify-content: center
+    .angle, .way
+      width: 30px
+      padding: 0 4px;
+    .angle
+      text-align: right
+      box-shadow: 1px -2px #333
+    .way
+      box-shadow: -1px -2px #333
