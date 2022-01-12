@@ -39,7 +39,7 @@ module.exports = merge(common, {
   },
   plugins: [
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, "../dist")],
+      cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, "../docs")],
       root: process.cwd(),
       verbose: true,
       dry: false,

@@ -12,8 +12,7 @@
     "start:style": "cross-env MAP_STYLE=true webpack-dev-server --config=config/webpack.dev.js --hot",
     "analyze": "ENABLE_ANALYZER=true webpack --config=config/webpack.prod.js",
     "build": "webpack --config=config/webpack.prod.js",
-    "serve": "http-server dist",
-    "test": "sh scripts/test.sh"
+    "serve": "http-server dist"
   },
   "dependencies": {
     "@babel/helper-define-polyfill-provider": "^0.3.1",
