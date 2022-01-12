@@ -1,3 +1,2 @@
-export { Time, Search, Icon, UserLocation, AFavouritesManager } from "./@core"
-export { Notes } from "./Notes/Notes"
+export { Time, Icon } from "./@core"
 export {Shell} from "./Shell/Shell"

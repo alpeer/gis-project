@@ -21,14 +21,13 @@ export const MagnitudeSlider = ({ value, onChange }) => {
     }
   };
   console.log(value,"1")
-  return <Box sx={{ width: 250 }}>
+  return <Box sx={{ width: 264,marginLeft: 2 }}>
     <Slider marks
       getAriaLabel={() => 'Magnitude Range'}
       value={value}
       step={0.5}
       min={3}
       max={9}
-      minDistance={1}
       onChange={handleChange}
       valueLabelDisplay="auto"
       disableSwap

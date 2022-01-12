@@ -1,5 +1,3 @@
-export { Disk, cityDisk, useDisk, useUserDisk, useNoteDisk, weatherDisk } from "./disk"
-export { Service } from "./Service"
-export { useWeather, useWeatherUpdater } from "./weather"
+export { Disk, useDisk } from "./disk"
 
-export const earthquakes = window.earthquakes=require("./clean.json")
+export const earthquakes = window.earthquakes=require("./earthquakes.geo.json")

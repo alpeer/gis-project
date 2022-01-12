@@ -17,7 +17,7 @@ export const Compass = () => {
   }, [])
   const way = ways[Math.floor((angle+22.5)/45)]
   return <div className="Compass">
-    <div className="angles" style={{backgroundPosition:"calc(50% + "+((-2428/360*angle)-1231)+"px) 4px"}}/>
+    <div className="angles" style={{backgroundPosition:"calc(50% + "+((-2428/360*angle)-1231)+"px) 4px", backgroundImage:"url(./compass.svg)"}}/>
     <div className="coords">{dec2dms({ lat, lng })}</div>
     
     <div className="middle">

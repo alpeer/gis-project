@@ -1,45 +1,49 @@
 
 import { useHash } from "@utils"
-import { Button, Icon } from "@mui/material"
+import { Button, Icon, TextField, IconButton } from "@mui/material"
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import moment from "moment"
 import {map} from "../../../map"
 import classNames from "classnames"
+import {useState} from "react"
 
 export const Collection = ({ id, name, items, onUpdate }) => {
   const [hashes, has] = useHash(items, viewportHash)
-
+  const [itemName, setName] = useState("")
   const saveViewport = () => {
     const viewport = getViewport()
     if (!has(viewport)) {
       onUpdate({
         items: [{
           ...viewport,
-          img: map.getCanvas().toDataURL("image/jpeg"),
+          name:itemName.trim(),
+          //img: map.getCanvas().toDataURL("image/jpeg"),
           time: Date.now()
         }, ...items]
       })
+      setName("")
     }
   }
-  // useEffect(() => {
-  //   let timeout
-  //   const map = window.geo.map
-  //   map.on("move", () => {
-  //     clearTimeout(timeout)
-  //     console.log(1)
-  //     timeout = setTimeout(saveItem, 5000)
-  //   })
-  //   return () => {
-  //     clearTimeout(timeout)
-  //   }
-  // }, [])
+  const remove = (key) => () => {
+    const update = [...items]
+    update.splice(key, 1)
+    onUpdate({
+      items: update
+    })
+    setName("")
+  }
   return <div className="Collection">
-    <Button onClick={saveViewport}>Kaydet</Button>
+    <div className="save-to-collection">
+      <TextField placeholder="Entity Name" onChange={(e) => setName(e.target.value)} value={itemName} />
+    <Button onClick={saveViewport} disabled={itemName.trim().length<1}> Save </Button>
+    </div>
     {
       items.map((i, key) =>
         <div className={classNames("item", { new:(Date.now()-i.time)<5000})} key={key} onClick={setViewport(i)}>
-          <img src={i.img} height={50} />
+          {/* <img src={i.img} height={50} /> */}
+          <div className="name"> <b>{i.name}</b> </div>
           <div className="time">{moment(i.time).format("DD/MM/YY HH:mm")}</div>
-          <Icon icon="trash" />
+          <IconButton onClick={remove(key)}> <DeleteOutlinedIcon/></IconButton>
         </div>)
     }
   </div>
@@ -47,7 +51,7 @@ export const Collection = ({ id, name, items, onUpdate }) => {
 
 
 const viewportHash = ({ bearing, pitch, zoom, center: [longitude, latitude] }) =>
-  Math.round(latitude * longitude * zoom * pitch + bearing)
+  Math.round(latitude * longitude * zoom + pitch + bearing)
 
 const getViewport = () => {
   const { lat: latitude, lng: longitude } = map.getCenter()

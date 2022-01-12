@@ -108,5 +108,6 @@ export const useLoadingState = (resetErrorState) => {
 export const useHash = (items, hashFn) =>
   useMemo(() => {
     const hashes = items.map(hashFn);
+    console.log(items,hashes)
     return [hashes, (item) => hashes.indexOf(hashFn(item)) > -1];
   }, [JSON.stringify(items)]);

@@ -4,7 +4,7 @@
 
 ```bash
   git clone https://github.com/alpeer/gis-project.git
-  cd gis-project/frontend
+  cd gis-project
   npm install
 ```
 

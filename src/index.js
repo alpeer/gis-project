@@ -2,37 +2,20 @@ import { createElement } from "react"
 import { render } from "react-dom"
 import { Shell } from "./components"
 import { render as renderMap } from "./map"
-import pages from "./pages"
 import { Disk } from "./data";
-import heatmap from "./map/heatmap"
+import loadFaultsLayer from "./map/layers/faults";
+import loadEarthquakesLayer from "./map/layers/earthquakes";
 
-// import { Login, authenticate } from "./pages/Login"
-// import service from "./service"
-
-// const authenticate = (onAuthCallback) => { 
-//   let token = localStorage.getItem("token");
-//   const renderLogin = () => {
-//     render(createElement(Login, {}), document.getElementById("root"));
-//   }
-//   if (localStorage.getItem("token")) {
-//     return service.login.validate(token).then((user) => {
-//       Disk.user = user;
-//       onAuthCallback()
-//     }).catch(renderLogin);
-//   }
-//   renderLogin();
-// }
-
-// authenticate(() => {
-  
-// })
 const mapBox = renderMap(document.getElementById("map"));
 mapBox.on("load", () => {
   render(
-    createElement(Shell, { map:mapBox, pages }),
+    createElement(Shell),
     document.getElementById("root")
   );
-  setTimeout(()=>heatmap(mapBox),500)
+  loadEarthquakesLayer(mapBox);
+  setTimeout(() => {
+    loadFaultsLayer(mapBox);
+  }, 500)
 });
 
 

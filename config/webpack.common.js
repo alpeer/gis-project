@@ -92,6 +92,7 @@ module.exports = {
       // and not allow any straggling "old" SWs to hang around
       clientsClaim: true,
       skipWaiting: true,
+      maximumFileSizeToCacheInBytes: 7e7
     }),
   ],
 
