@@ -37,8 +37,10 @@ Builds and generates source-map, launches analyzer
   npm run serve
 ```
 
-#### Test
+#### Project report
 
-```bash
-  npm test
-```
+[Click to view project report](https://alpeer.github.io/gis-project/report.pdf)
+
+#### Working Demo
+
+[Launch Demo](https://alpeer.github.io/gis-project)
