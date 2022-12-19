@@ -2,7 +2,7 @@
 import { useHash } from "@utils"
 import { Button, Icon } from "@mui/material"
 import moment from "moment"
-import {map} from "../../map"
+import {map} from "../../../map"
 import classNames from "classnames"
 
 export const Collection = ({ id, name, items, onUpdate }) => {

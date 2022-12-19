@@ -81,7 +81,7 @@ module.exports = {
     }),
     new HtmlWebPackPlugin({
       title: config.appName,
-      template: "./public/index.html",
+      template: "./assets/index.html",
       inject: true,
       meta: {
         viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
@@ -94,9 +94,7 @@ module.exports = {
       skipWaiting: true,
     }),
   ],
-  node: {
-    fs: "empty",
-  },
+
   resolve: {
     extensions: [".js", ".jsx"],
     alias: {
@@ -106,5 +104,8 @@ module.exports = {
       "@views": resolve("../src/views"),
       "@utils": resolve("../src/utils/index.js"),
     },
+    fallback: {
+    fs: false
+    }
   },
 };

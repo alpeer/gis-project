@@ -1,10 +1,13 @@
-import {earthquakes} from "../data"
+import { earthquakes } from "../data"
+import { map } from "."
+import mapboxgl from "!mapbox-gl";
+
 export default (map) =>  {
   // Add a geojson point source.
   // Heatmap layers also work with a vector tile source.
   map.addSource("earthquakes", {
     type: "geojson",
-    data: earthquakes,
+    data: {},
   });
 
   map.addLayer(
@@ -99,4 +102,17 @@ export default (map) =>  {
     },
     "waterway-label"
   );
+  map.on("click", "earthquakes-point", (e) => {
+    console.log(e)
+    new mapboxgl.Popup()
+      .setLngLat(e.lngLat)
+      .setHTML(e.features[0].properties.name)
+      .addTo(map);
+  });
+}
+
+export const filterEarthQuakeData = (filter) => {
+  const { features, ...rest } = earthquakes
+  const data = features.filter(filter)
+  map.getSource("earthquakes").setData({ ...rest, features: data });
 }

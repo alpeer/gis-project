@@ -32,7 +32,7 @@ mapBox.on("load", () => {
     createElement(Shell, { map:mapBox, pages }),
     document.getElementById("root")
   );
-  // setTimeout(()=>heatmap(mapBox),500)
+  setTimeout(()=>heatmap(mapBox),500)
 });
 
 

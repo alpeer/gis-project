@@ -1,4 +1,4 @@
-# The Weather App
+# GIS Project
 
 ## Installation
 

@@ -1,4 +1,4 @@
-import { Route, Router, Switch } from "react-router-dom"
+import { Route, Router, Routes } from "react-router-dom"
 import { useState, useEffect, useMemo } from "react"
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,10 +7,8 @@ import { useWeatherUpdater, useDisk } from "@data"
 import { ErrorView } from "@views"
 import classNames from "classnames";
 import "./Shell.sass"
-import {Window} from "../@core/Window/Window"
-import {Collections} from "../Windows/Collections"
+import {Collections, Earthquakes} from "../Windows"
 import { Compass } from "../../map/Compass/Compass"
-import { Earthquakes } from "../Windows/Earthquakes";
 
 const LimitControl = (props) => {
   const [value, setValue] = useDisk("value", 0)
@@ -44,7 +42,7 @@ export const Shell = ({pages}) => {
   console.log(routes)
   // console.log("isChanged", !!reset)
   // console.log("value", value)
-  return <Router history={history}>
+  return <>
     <Compass value={projection?projection.angle:0}/>
     <div className="Header">
       <div className="appName">
@@ -62,13 +60,13 @@ export const Shell = ({pages}) => {
     <Collections />
     <Earthquakes/>
   
-    <div className={classNames("Page", {appVisible:true})}>
-      <Switch>
+    {/* <div className={classNames("Page", {appVisible:true})}>
+      <Routes>
         {routes.map((route, i) => <Route key={i} {...route}/>)}
-      </Switch>
-    </div>
+      </Routes>
+    </div> */}
     <ToastContainer />
-  </Router>
+  </>
 }
 
 // const useInitialValue = (initialValue, defaultValue=null)=> {

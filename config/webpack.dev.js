@@ -1,6 +1,5 @@
-const merge = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 const resolve = (...args) => path.resolve(__dirname, ...args);
@@ -12,17 +11,15 @@ module.exports = merge(common, {
   devtool: "inline-source-map",
 
   devServer: {
-    public: "localhost:3001",
-    host: "0.0.0.0",
+    host: "localhost",
     port: 3001,
-    contentBase: resolve("dist"),
-    filename: resolve("dist/index.js"),
     historyApiFallback: true,
-    overlay: true,
     open: true,
-    inline: true,
     hot: true,
-    stats: "errors-only",
+  },
+  watchOptions: {
+    aggregateTimeout: 200,
+    poll: 1000,
   },
   module: {
     rules: [
@@ -43,9 +40,5 @@ module.exports = merge(common, {
       },
     ],
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-    }),
-  ],
+  plugins: [],
 });
